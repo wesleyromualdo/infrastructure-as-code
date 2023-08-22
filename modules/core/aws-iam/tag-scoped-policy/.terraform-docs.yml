@@ -1,0 +1,22 @@
+formatter: "markdown"
+
+content: |
+  This module provides a way to create "tag scoped" policies from existing policies but with conditions/restrictions.
+  
+  With this module, you can have, for example, a policy with "Administrator" privileges but only for the resources with specified tags.
+  
+  More information on how to use tags to tie environment permissions can be viewed at: https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html
+  
+  A complete example of how to use it can be seen below:
+  ```hcl
+  {{ include "example/main.tf" }}
+  ```
+  
+  In this example, a policy called "greenfield2-staging-admin-policy" will allow EC2FullPrivileges, but only for those resources that comply with the tag scope `{"Project":"GreenField2", "Environment": "staging"}`.
+  
+  PS: Beware that not every action or policy on AWS can be used with conditions. More info: https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html.
+    
+  {{ .Header }}
+  {{ .Inputs }}
+  {{ .Providers }}
+  {{ .Outputs }}
